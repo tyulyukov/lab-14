@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Lab14.MainWindow"
+        Title="Lab14">
+  <StackPanel Margin="10">
+    <!-- MainPet creation -->
+    <Button Name="CreateHomePetButton" Content="Create Home Pet" Click="OnCreateHomePet"/>
+    <!-- Subordinate pets - disabled until HomePet is created -->
+    <Button Name="CreateDogButton" Content="Create Dog" Click="OnCreateDog" IsEnabled="False"/>
+    <Button Name="CreateCatButton" Content="Create Cat" Click="OnCreateCat" IsEnabled="False"/>
+    <Button Name="CreateParrotButton" Content="Create Parrot" Click="OnCreateParrot" IsEnabled="False"/>
+    <!-- Output area -->
+    <TextBlock Name="OutputTextBlock" Margin="10"/>
+  </StackPanel>
+</Window>
