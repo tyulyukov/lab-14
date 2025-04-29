@@ -1,15 +1,80 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="Lab14.MainWindow"
-        Title="Lab14">
-  <StackPanel Margin="10">
-    <!-- MainPet creation -->
-    <Button Name="CreateHomePetButton" Content="Create Home Pet" Click="OnCreateHomePet"/>
-    <!-- Subordinate pets - disabled until HomePet is created -->
-    <Button Name="CreateDogButton" Content="Create Dog" Click="OnCreateDog" IsEnabled="False"/>
-    <Button Name="CreateCatButton" Content="Create Cat" Click="OnCreateCat" IsEnabled="False"/>
-    <Button Name="CreateParrotButton" Content="Create Parrot" Click="OnCreateParrot" IsEnabled="False"/>
-    <!-- Output area -->
-    <TextBlock Name="OutputTextBlock" Margin="10"/>
+        Title="Lab14"
+        Width="350"
+        Height="750">
+  <StackPanel Margin="10" Spacing="10">
+
+    <!-- Собака -->
+    <Border BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="4"
+            Padding="6"
+            x:Name="DogGroup">
+      <StackPanel Spacing="5">
+        <TextBlock Text="Собака"
+                   FontWeight="Bold"
+                   Margin="0,0,0,4"/>
+        <TextBlock Text="Ім'я собаки:"/>
+        <TextBox x:Name="DogNameTextBox"/>
+        <Button x:Name="CreateDogButton"
+                Content="Створити собаку"
+                Click="CreateDogButton_Click"/>
+        <TextBlock x:Name="DogInfoTextBlock"
+                   FontStyle="Italic"/>
+      </StackPanel>
+    </Border>
+
+    <!-- Кішка -->
+    <Border BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="4"
+            Padding="6"
+            x:Name="CatGroup">
+      <StackPanel Spacing="5">
+        <TextBlock Text="Кішка"
+                   FontWeight="Bold"
+                   Margin="0,0,0,4"/>
+        <TextBlock Text="Ім'я кішки:"/>
+        <TextBox x:Name="CatNameTextBox"/>
+        <Button x:Name="CreateCatButton"
+                Content="Створити кішку"
+                Click="CreateCatButton_Click"/>
+        <TextBlock x:Name="CatInfoTextBlock"
+                   FontStyle="Italic"/>
+      </StackPanel>
+    </Border>
+
+    <!-- Папуга -->
+    <Border BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="4"
+            Padding="6"
+            x:Name="ParrotGroup">
+      <StackPanel Spacing="5">
+        <TextBlock Text="Папуга"
+                   FontWeight="Bold"
+                   Margin="0,0,0,4"/>
+        <TextBlock Text="Ім'я папуги:"/>
+        <TextBox x:Name="ParrotNameTextBox"/>
+        <Button x:Name="CreateParrotButton"
+                Content="Створити папугу"
+                Click="CreateParrotButton_Click"/>
+        <TextBlock x:Name="ParrotInfoTextBlock"
+                   FontStyle="Italic"/>
+      </StackPanel>
+    </Border>
+
+    <!-- Speak button -->
+    <Button x:Name="SpeakButton"
+            Content="Speak"
+            IsEnabled="False"
+            Click="SpeakButton_Click"/>
+
+    <!-- Остання подія звуку -->
+    <TextBlock x:Name="LastEventTextBlock"
+               FontWeight="Bold"
+               Margin="0,20,0,0"/>
   </StackPanel>
 </Window>

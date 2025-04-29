@@ -2,60 +2,79 @@ using System;
 
 namespace Lab14;
 
-public interface IPet
+// Інтерфейс зі звуком і подією
+public interface ISpeakable
 {
-    event EventHandler PetSound;
     void Speak();
+    event EventHandler<SoundEventArgs>? SoundMade;
 }
 
-public class HomePet : IPet
+public class SoundEventArgs : EventArgs
 {
-    public event EventHandler PetSound;
-    public string Name { get; set; }
+    public string Sound { get; set; }
+}
 
+// Головний клас ієрархії
+public class HomePet : ISpeakable
+{
     public HomePet(string name)
     {
         Name = name;
     }
 
-    // New protected method to raise the event.
-    protected void RaisePetSound()
+    public string Name { get; }
+    public event EventHandler<SoundEventArgs>? SoundMade;
+
+    public void Speak()
     {
-        PetSound?.Invoke(this, EventArgs.Empty);
+        var soundCount = Random.Shared.Next(1, 5);
+        var s = string.Empty;
+        for (var i = 0; i < soundCount; i++)
+        {
+            s += GetSound() + " ";
+        }
+
+        SoundMade?.Invoke(this, new SoundEventArgs { Sound = s });
     }
 
-    public virtual void Speak()
+    protected virtual string GetSound()
     {
-        RaisePetSound();
+        return "Я домашня тварина";
     }
 }
 
 public class Dog : HomePet
 {
-    public Dog(string name) : base(name) { }
-
-    public override void Speak()
+    public Dog(string name) : base(name)
     {
-        RaisePetSound();
+    }
+
+    protected override string GetSound()
+    {
+        return "Гав";
     }
 }
 
 public class Cat : HomePet
 {
-    public Cat(string name) : base(name) { }
-
-    public override void Speak()
+    public Cat(string name) : base(name)
     {
-        RaisePetSound();
+    }
+
+    protected override string GetSound()
+    {
+        return "Мяу";
     }
 }
 
 public class Parrot : HomePet
 {
-    public Parrot(string name) : base(name) { }
-
-    public override void Speak()
+    public Parrot(string name) : base(name)
     {
-        RaisePetSound();
+    }
+
+    protected override string GetSound()
+    {
+        return "Крр";
     }
 }
