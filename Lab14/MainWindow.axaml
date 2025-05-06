@@ -68,7 +68,7 @@
 
     <!-- Speak button -->
     <Button x:Name="SpeakButton"
-            Content="Speak"
+            Content="Звук"
             IsEnabled="False"
             Click="SpeakButton_Click"/>
 

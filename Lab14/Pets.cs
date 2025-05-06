@@ -27,7 +27,7 @@ public class HomePet : ISpeakable
 
     public void Speak()
     {
-        var soundCount = Random.Shared.Next(1, 5);
+        var soundCount = Random.Shared.Next(1, 10);
         var s = string.Empty;
         for (var i = 0; i < soundCount; i++)
         {
